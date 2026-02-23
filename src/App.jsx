@@ -1,7 +1,27 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
+import anime from 'animejs';
 
 function App() {
+  useEffect(() => {
+    // Animación de la línea
+    anime({
+      targets: '.animated-line',
+      width: '100%',
+      easing: 'easeInOutQuad',
+      duration: 1500
+    });
+
+    // Animación de los botones (efecto cascada/stagger)
+    anime({
+      targets: '.btn',
+      translateY: [20, 0],
+      opacity: [0, 1],
+      delay: anime.stagger(100, { start: 500 }), // Comienza a los 500ms, +100ms por botón
+      easing: 'easeOutExpo'
+    });
+  }, []);
+
   const handleButtonClick = (platform) => {
     const urls = {
       ingresar: '#',
@@ -71,6 +91,7 @@ function App() {
           <div className="design-elements">
             <div className="innovation-text">
               <p className="innovation-line">INNOVACIÓN QUE TRANSFORMA</p>
+              <div className="animated-line"></div>
               <div className="tech-tags">
                 <span className="tag">LEGAL-TECH</span>
                 <span className="tag">AUTOMATIZACIÓN</span>

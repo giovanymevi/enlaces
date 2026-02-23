@@ -65,7 +65,7 @@
   gap: 10px;
   position: relative;
   overflow: hidden;
-  animation: fadeInUp 1s ease;
+  opacity: 0; /* Anime.js manejará la aparición */
   width: 100%;
   max-width: 420px;
   box-sizing: border-box;
@@ -155,7 +155,7 @@
   color: white;
   font-size: 1.5rem;
   font-weight: 700;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
   text-transform: uppercase;
   letter-spacing: 3px;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
@@ -200,6 +200,21 @@
   width: 100%;
 }
 
+.animated-line {
+  height: 3px;
+  background-color: white;
+  width: 0;
+  margin: 8px auto 20px auto;
+  border-radius: 2px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+@keyframes expandLine {
+  to {
+    width: 100%;
+  }
+}
+
 /* Animaciones */
 @keyframes fadeInDown {
   from {
@@ -229,6 +244,12 @@
   }
   to {
     opacity: 1;
+  }
+}
+
+@keyframes drawLine {
+  to {
+    stroke-dashoffset: 0;
   }
 }
 
