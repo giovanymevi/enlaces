@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import './App.css';
 import anime from 'animejs';
+import { HeroTitle } from './components/HeroTitle';
 
 function App() {
   useEffect(() => {
@@ -42,7 +43,7 @@ function App() {
         <div className="container">
           {/* Logo o título */}
           <div className="header">
-            <h1 className="brand-title">amandarina.cl</h1>
+            <HeroTitle />
           </div>
 
           {/* Botones */}

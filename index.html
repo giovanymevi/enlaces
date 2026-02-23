@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>enlaces-amandarina</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
     <style>
       /* Page background and base reset */
       html,
@@ -62,6 +63,12 @@
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         letter-spacing: 2px;
         margin-bottom: 10px;
+      }
+
+      .brand-title span {
+        display: inline-block;
+        opacity: 0; /* Oculto inicialmente para la animación */
+        transform: translateY(40px);
       }
 
       .buttons-container {
@@ -268,8 +275,31 @@
     </div>
 
     <script>
-      // Add click handlers for buttons
       document.addEventListener("DOMContentLoaded", function () {
+        // --- Animación del Título ---
+        const titleEl = document.querySelector(".brand-title");
+        if (titleEl) {
+          const text = titleEl.textContent.trim();
+          titleEl.innerHTML = ""; // Limpiar el texto original
+          text.split("").forEach((char) => {
+            const span = document.createElement("span");
+            // Usar &nbsp; para los espacios para que ocupen lugar
+            span.innerHTML = char === " " ? "&nbsp;" : char;
+            titleEl.appendChild(span);
+          });
+
+          // Usar Anime.js para animar cada letra
+          anime({
+            targets: ".brand-title span",
+            translateY: [40, 0],
+            opacity: [0, 1],
+            easing: "easeOutExpo",
+            duration: 1400,
+            delay: anime.stagger(100, { start: 300 }),
+          });
+        }
+
+        // --- Funcionalidad de los Botones ---
         document.querySelectorAll(".btn").forEach(function (btn) {
           btn.addEventListener("click", function () {
             var url = btn.getAttribute("data-url") || "#";

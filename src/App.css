@@ -31,14 +31,19 @@
   margin-bottom: 40px;
 }
 
-.brand-title {
+.hero-title {
   color: white;
   font-size: 2.5rem;
   font-weight: 700;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   letter-spacing: 2px;
   margin-bottom: 10px;
-  animation: fadeInDown 1s ease;
+}
+
+.hero-title span {
+  /* Required for Anime.js to handle transforms and opacity */
+  display: inline-block;
+  opacity: 0;
 }
 
 /* Botones */
@@ -259,7 +264,7 @@
     margin-bottom: 30px;
   }
 
-  .brand-title {
+  .hero-title {
     font-size: 2rem;
   }
 
@@ -301,7 +306,7 @@
     margin-bottom: 25px;
   }
 
-  .brand-title {
+  .hero-title {
     font-size: 1.8rem;
   }
 
